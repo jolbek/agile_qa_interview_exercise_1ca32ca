@@ -1,14 +1,11 @@
 package counter.stepDef;
-
 import com.exercise.VowelAndConsonantCounter;
-
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.junit.Assert;
 
-
 public class VowelConsonantCounterStepDef {
+
     private static String[] argument;
 
     @Given("user calls the counter with String as {string}")
@@ -19,6 +16,7 @@ public class VowelConsonantCounterStepDef {
 
          //Declaring the input argument as a class variable
          argument =argInput.split(",");
+
     }
 
     @Then("count logic should return number of vowels as {string} consonant as {string}")
@@ -40,9 +38,12 @@ public class VowelConsonantCounterStepDef {
         }
     }
 
-    @Then("count logic should return {string} message")
-    public void countLogicShouldReturnMessage(String resultMessage) {
+    @Then("count logic should return Extra arguments passed message")
+    public void countLogicShouldReturnExtraArgumentPassedMessage() {
 
-
+        String actualMeesage = VowelAndConsonantCounter.message;
+        String expectedMessage = "Extra arguments passed.";
+        Assert.assertTrue(actualMeesage.equalsIgnoreCase(expectedMessage));
     }
+
 }

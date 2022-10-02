@@ -1,27 +1,28 @@
 package com.exercise;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class VowelAndConsonantCounter {
     public static Map<String, Integer> vowelCount = new HashMap<>();
     public static Map<String, Integer> consonentCount = new HashMap<>();
+    public static String message ;
 
     public static void main(String[] args) {
         vowelCount.clear();
         consonentCount.clear();
         if (args.length >=4) {
+            message="Extra arguments passed.";
             System.out.println("Extra arguments passed.");
         } else {
             List<String> argumentList = Arrays.asList(args);
             argumentList.forEach(argument -> vowelCount.put(argument,getCharCounts(argument).get("vowel")));
             argumentList.forEach(argument -> consonentCount.put(argument,getCharCounts(argument).get("consonant")));
+
+            //added descriptive message in the result
             System.out.println("Vowel : "+vowelCount);
             System.out.println("Consonant :"+consonentCount);
         }
     }
-
-
 
     public static  Map<String,Integer> getCharCounts(String input) {
         Map<String, Integer> result= new HashMap<>();
